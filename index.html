@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 v-day</title>
+    <title>小陳，打開這個 ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,13 +14,17 @@
         <div id="counter">我們已經在一起 <span id="days">0</span> 天了</div>
     </header>
 
-    <div style="text-align: center; margin-top: 30px;">
+    <div id="start-area" style="text-align: center; margin-top: 30px;">
         <button id="surpriseBtn" class="love-button">點一下 ❤️</button>
     </div>
 
-    <div id="secretMessage" style="display:none; text-align: center; padding: 20px; color: #d63384;">
-        <h2>這是我想對你說的話：</h2>
-        <p>你太壞了！昨天中午12點後都沒有傳訊息給我 😤 <br>但還是最愛你了！</p>
+    <div id="envelope-wrapper" style="display:none; margin: 20px auto; perspective: 1000px;">
+        <div id="envelope" class="envelope">
+            <div class="flap"></div>
+            <div class="letter">
+                <p id="typewriter" style="font-weight: bold;"></p>
+            </div>
+        </div>
     </div>
 
     <div class="timeline">
@@ -64,6 +68,15 @@
             <button id="yesBtn" class="love-button" style="margin-right: 20px; z-index: 10;">好！❤️</button>
             <button id="noBtn" class="love-button" style="background-color: #aaa; z-index: 10;">不答應 😢</button>
         </div>
+    </div>
+
+    <div id="wish-pond" style="text-align: center; margin: 80px auto 120px auto; padding: 40px 20px; background: rgba(255,255,255,0.8); border-radius: 20px; max-width: 500px; border: 2px solid #ffb6c1;">
+        <h2 style="color: #ff4d6d;">🌟 明天情人節許願池</h2>
+        <p>親愛的小陳，明天情人節你想去哪裡？</p>
+        <input type="text" id="wishInput" placeholder="輸入你想去的地方..." style="padding: 12px; border-radius: 20px; border: 1px solid #ffb6c1; width: 80%; outline: none; margin-bottom: 15px;">
+        <br>
+        <button class="love-button" onclick="sendWish()">投擲願望 ❤️</button>
+        <p id="wishResult" style="display:none; color: #ff4d6d; font-weight: bold; margin-top: 15px;"></p>
     </div>
 
     <div id="heart-container"></div>
