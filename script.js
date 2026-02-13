@@ -1,5 +1,5 @@
 // 1. 計算在一起的天數
-const startDate = new Date("2024-05-20"); // ⚠️ 這裡改為你們在一起的日期
+const startDate = new Date("2023-04-14"); // 
 const daysEl = document.getElementById("days");
 
 function updateTimer() {
