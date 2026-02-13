@@ -1,63 +1,18 @@
-body {
-    background-color: #fff5f5;
-    font-family: 'Microsoft JhengHei', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-header {
-    text-align: center;
-    padding: 50px;
-    color: #d63384;
-}
-
-#counter {
-    font-size: 1.5rem;
-    margin-top: 10px;
-}
-
-/* 時間軸主線 */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background-color: #ffb6c1;
-    top: 0; bottom: 0; left: 50%;
-    margin-left: -3px;
-}
-
-/* 內容容器 */
-.container {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-    box-sizing: border-box;
-}
-
-.left { left: 0; }
-.right { left: 50%; }
-
-.content {
-    padding: 20px;
-    background: white;
+/* 貼在 style.css 的最下方 */
+.timeline-img {
+    width: 100%;
+    max-width: 400px;
     border-radius: 15px;
+    margin-top: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s;
 }
 
-/* 愛心飄落動畫 */
-.heart {
-    position: fixed;
-    color: #ff6b6b;
-    font-size: 20px;
-    user-select: none;
-    z-index: 1000;
-    animation: fall linear forwards;
+.timeline-img:hover {
+    transform: scale(1.03);
 }
 
 @keyframes fall {
