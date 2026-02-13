@@ -6,14 +6,6 @@
     <title>我們的專屬回憶</title>
     <link rel="stylesheet" href="style.css">
 </head>
-    <div style="text-align: center; margin-top: 30px;">
-    <button id="surpriseBtn" class="love-button">點擊領取驚喜 ❤️</button>
-</div>
-
-<div id="secretMessage" style="display:none; text-align: center; padding: 20px; color: #d63384;">
-    <h2>這是我想對你說的話：</h2>
-    <p>你太壞了！昨天中午12點後都沒有傳訊息給我</p>
-</div>
 <body>
     <audio id="bgm" src="your-music.mp3" autoplay loop></audio>
 
@@ -22,12 +14,21 @@
         <div id="counter">我們已經在一起 <span id="days">0</span> 天了</div>
     </header>
 
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="surpriseBtn" class="love-button">點擊領取驚喜 ❤️</button>
+    </div>
+
+    <div id="secretMessage" style="display:none; text-align: center; padding: 20px; color: #d63384;">
+        <h2>這是我想對你說的話：</h2>
+        <p>你太壞了！昨天中午12點後都沒有傳訊息給我</p>
+    </div>
+
     <div class="timeline">
         <div class="container left">
             <div class="content">
                 <h2>2023.04.16</h2>
                 <p>這天是我們第一次合照。</p>
-                <img src="photo1.HEIC" class="timeline-img">
+                <img src="photo1.jpg" class="timeline-img">
             </div>
         </div>
 
@@ -35,16 +36,14 @@
             <div class="content">
                 <h2>2024.02.14</h2>
                 <p>我們一起度過的第一個v-day。</p>
-               <video width="100%" controls playsinline style="border-radius: 15px; margin-top: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <source src="photo2.MOV" type="video/quicktime">
-    <source src="photo2.MOV" type="video/mp4">
-    您的瀏覽器不支持影片播放。
-</video>
-
+                <video width="100%" controls playsinline class="timeline-img">
+                    <source src="photo2.MOV" type="video/quicktime">
+                    <source src="photo2.MOV" type="video/mp4">
+                    您的瀏覽器不支持影片播放。
+                </video>
             </div>
         </div>
-
-        </div>
+    </div>
 
     <div id="heart-container"></div>
 
