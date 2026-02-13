@@ -1,112 +1,152 @@
-/* 1. 基礎頁面樣式 */
+/* 基礎設定 */
 body {
-    background-color: #fff5f5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    overflow-x: hidden;
+    padding: 0;
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #fff0f3;
+    color: #333;
+    overflow-x: hidden; /* 防止手機橫向滾動 */
 }
 
 header {
+    background-color: #ffb6c1;
+    color: white;
+    padding: 30px 15px;
     text-align: center;
-    padding: 50px 20px;
-    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* 2. 垂直時間軸核心佈局 */
+h1 {
+    margin: 0;
+    font-size: 1.8rem; /* 手機端標題大小 */
+}
+
+/* 愛心按鈕樣式 */
+.love-button {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+}
+
+.love-button:active {
+    transform: scale(0.95);
+}
+
+/* 時間軸容器 */
 .timeline {
     position: relative;
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 40px auto;
+    padding: 10px;
 }
 
-/* 中間的那條粉紅線 */
+/* 時間軸中央線 - 在手機上移到左側 */
 .timeline::after {
     content: '';
     position: absolute;
-    width: 6px;
+    width: 4px;
     background-color: #ffb6c1;
     top: 0;
     bottom: 0;
-    left: 50%;
-    margin-left: -3px;
+    left: 20px; /* 手機端固定在左側 */
+    margin-left: 0;
 }
 
+/* 內容區塊容器 */
 .container {
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
-    width: 50%;
+    width: 100%; /* 手機全寬 */
     box-sizing: border-box;
+    left: 0 !important; /* 強制所有區塊靠左 */
 }
 
-.left { left: 0; }
-.right { left: 50%; }
-
+/* 內容框 */
 .content {
-    padding: 20px 30px;
+    padding: 15px;
     background-color: white;
     position: relative;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* 3. 圖片與影片美化 */
+/* 圖片與影片優化 */
 .timeline-img {
     width: 100%;
-    max-width: 400px;
-    border-radius: 15px;
-    margin-top: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    transition: transform 0.3s;
+    max-height: 400px; /* 限制高度，避免滑太久 */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
-.timeline-img:hover {
-    transform: scale(1.03);
+/* 互動區塊優化 */
+#interactive-game {
+    width: 90% !important;
+    margin: 50px auto !important;
+    padding: 30px 15px !important;
 }
 
-/* 4. 按鈕樣式 */
-.love-button {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    transition: transform 0.2s;
+/* 修正不答應按鈕的過渡 */
+#noBtn {
+    transition: left 0.2s ease, top 0.2s ease;
+    z-index: 9999;
 }
 
-.love-button:hover { transform: scale(1.1); }
-
-/* 5. 愛心飄落特效 */
-#heart-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
+/* 愛心動畫 */
 .heart {
-    position: absolute;
-    top: -20px;
+    position: fixed;
+    top: -10vh;
     font-size: 20px;
+    user-select: none;
+    z-index: 999;
     animation: fall linear forwards;
 }
 
 @keyframes fall {
-    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
 
-/* 手機版自動調整（讓時間軸在手機上變單欄） */
-@media screen and (max-width: 600px) {
-    .timeline::after { left: 31px; }
-    .container { width: 100%; padding-left: 70px; padding-right: 25px; }
-    .right { left: 0%; }
+/* 電腦版適配 (螢幕大於 600px 時恢復左右排列) */
+@media screen and (min-width: 600px) {
+    h1 { font-size: 2.5rem; }
+    
+    .timeline::after {
+        left: 50%;
+        margin-left: -2px;
+    }
+    
+    .container {
+        width: 50%;
+    }
+    
+    .container.left { left: 0 !important; }
+    .container.right { left: 50% !important; }
+    
+    .container::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: white;
+        border: 4px solid #ffb6c1;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    
+    .container.right::after { left: -10px; }
+    
+    .timeline-img {
+        max-height: none;
+    }
 }
