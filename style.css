@@ -68,13 +68,18 @@ h1 {
     left: 0 !important; /* 強制所有區塊靠左 */
 }
 
-/* 內容框 */
 .content {
     padding: 15px;
     background-color: white;
-    position: relative;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 5px; /* 拍立得通常比較方 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-bottom: 30px solid white; /* 底部的留白處 */
+    transform: rotate(-2deg); /* 讓照片有一點歪歪的隨興感 */
+}
+
+/* 讓右邊的區塊稍微往右歪，看起來更自然 */
+.container.right .content {
+    transform: rotate(2deg);
 }
 
 /* 圖片與影片優化 */
