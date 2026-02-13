@@ -9,10 +9,10 @@ window.onload = function() {
         daysEl.innerText = days;
     }
 
-   // 2. 頂部驚喜按鈕 + 音樂播放
+    // 2. 頂部驚喜按鈕 + 音樂播放
     const btn = document.getElementById('surpriseBtn');
     const msg = document.getElementById('secretMessage');
-    const audio = document.getElementById('bgm'); // 獲取音樂標籤
+    const audio = document.getElementById('bgm'); 
 
     if (btn && msg) {
         btn.onclick = function() {
@@ -28,8 +28,6 @@ window.onload = function() {
             alert("情人節快樂！❤️");
             msg.scrollIntoView({ behavior: 'smooth' });
             btn.style.display = 'none';
-        };
-    }
         };
     }
 
@@ -59,6 +57,7 @@ window.onload = function() {
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
+            noBtn.style.zIndex = '9999'; // 確保按鈕在最上層
         };
         noBtn.addEventListener('mouseover', moveButton);
         noBtn.addEventListener('touchstart', moveButton);
@@ -68,8 +67,11 @@ window.onload = function() {
         yesBtn.onclick = function() {
             questionText.innerText = "我就知道你會答應！最愛你了 💖";
             noBtn.style.display = 'none';
-            alert("確認成功！🥰");
-            for(let i=0; i<30; i++) { setTimeout(createHeart, i * 100); }
+            alert("確認成功！這輩子你跑不掉囉 🥰");
+            // 點擊成功後噴發大量愛心
+            for(let i=0; i<30; i++) { 
+                setTimeout(createHeart, i * 100); 
+            }
         };
     }
 };
