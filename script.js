@@ -9,27 +9,52 @@ window.onload = function() {
         daysEl.innerText = days;
     }
 
-    // 2. 頂部驚喜按鈕 + 音樂播放
+// 2. 頂部驚喜按鈕 (改為開信封)
     const btn = document.getElementById('surpriseBtn');
-    const msg = document.getElementById('secretMessage');
-    const audio = document.getElementById('bgm'); 
+    const envelopeWrapper = document.getElementById('envelope-wrapper');
+    const envelope = document.getElementById('envelope');
+    const audio = document.getElementById('bgm');
 
-    if (btn && msg) {
+    if (btn) {
         btn.onclick = function() {
-            msg.style.display = 'block';
-            
-            // 嘗試播放音樂
-            if (audio) {
-                audio.play().catch(function(error) {
-                    console.log("音樂播放被瀏覽器阻擋，需使用者互動才能播放");
-                });
-            }
-
-            alert("情人節快樂！❤️");
-            msg.scrollIntoView({ behavior: 'smooth' });
             btn.style.display = 'none';
+            envelopeWrapper.style.display = 'block';
+            if (audio) audio.play();
+
+            // 延遲一點點再打開信封
+            setTimeout(() => {
+                envelope.classList.add('open');
+                startTyping(); // 啟動打字效果
+            }, 500);
         };
     }
+
+    function startTyping() {
+        const fullText = "你太壞了！昨天中午12點後都沒有傳訊息給我 😤 但還是最愛你了！希望未來的每個情人節都有你。❤️";
+        const typewriterEl = document.getElementById("typewriter");
+        let index = 0;
+        function play() {
+            if (index < fullText.length) {
+                typewriterEl.innerText += fullText.charAt(index);
+                index++;
+                setTimeout(play, 100);
+            }
+        }
+        play();
+    }
+
+    // 許願池邏輯 (放這外面或 window.onload 裡面都可以)
+    window.sendWish = function() {
+        const wish = document.getElementById('wishInput').value;
+        const result = document.getElementById('wishResult');
+        if (wish.trim() !== "") {
+            result.innerText = `願望已收錄：『${wish}』。我們明天一起去吧！✨`;
+            result.style.display = 'block';
+            document.getElementById('wishInput').value = ""; // 清空
+        } else {
+            alert("請先寫下你的願望喔！");
+        }
+    };
 
     // 3. 愛心特效函數
     function createHeart() {
