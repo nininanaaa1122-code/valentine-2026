@@ -1,4 +1,56 @@
-/* 貼在 style.css 的最下方 */
+/* 1. 基礎頁面樣式 */
+body {
+    background-color: #fff5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+}
+
+/* 2. 垂直時間軸核心佈局 */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+/* 中間的那條粉紅線 */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #ffb6c1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 3. 圖片與影片美化 */
 .timeline-img {
     width: 100%;
     max-width: 400px;
@@ -15,6 +67,46 @@
     transform: scale(1.03);
 }
 
+/* 4. 按鈕樣式 */
+.love-button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: transform 0.2s;
+}
+
+.love-button:hover { transform: scale(1.1); }
+
+/* 5. 愛心飄落特效 */
+#heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.heart {
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+    animation: fall linear forwards;
+}
+
 @keyframes fall {
     to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* 手機版自動調整（讓時間軸在手機上變單欄） */
+@media screen and (max-width: 600px) {
+    .timeline::after { left: 31px; }
+    .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .right { left: 0%; }
 }
