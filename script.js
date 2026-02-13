@@ -9,15 +9,27 @@ window.onload = function() {
         daysEl.innerText = days;
     }
 
-    // 2. 頂部驚喜按鈕
+   // 2. 頂部驚喜按鈕 + 音樂播放
     const btn = document.getElementById('surpriseBtn');
     const msg = document.getElementById('secretMessage');
+    const audio = document.getElementById('bgm'); // 獲取音樂標籤
+
     if (btn && msg) {
         btn.onclick = function() {
             msg.style.display = 'block';
+            
+            // 嘗試播放音樂
+            if (audio) {
+                audio.play().catch(function(error) {
+                    console.log("音樂播放被瀏覽器阻擋，需使用者互動才能播放");
+                });
+            }
+
             alert("情人節快樂！❤️");
             msg.scrollIntoView({ behavior: 'smooth' });
             btn.style.display = 'none';
+        };
+    }
         };
     }
 
