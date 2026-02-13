@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>情人節快樂</title>
+    <style>
+        body { background: #fff5f5; text-align: center; font-family: sans-serif; padding-top: 50px; }
+        h1 { color: #d63384; }
+        .heart { color: red; font-size: 50px; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="heart">❤️</div>
+    <h1>情人節快樂！</h1>
+    <p>這是我們專屬的小天地</p>
+</body>
+</html>
