@@ -56,7 +56,7 @@ window.onload = function() {
         yesBtn.onclick = function() {
             questionText.innerText = "我就知道你會答應！最愛你了 💖";
             noBtn.style.display = 'none';
-            alert("確認成功！這輩子你跑不掉囉 🥰");
+            alert("確認成功！🥰");
             for(let i=0; i<30; i++) { setTimeout(createHeart, i * 100); }
         };
     }
