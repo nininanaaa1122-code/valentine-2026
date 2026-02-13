@@ -1,44 +1,63 @@
-// 1. 計算在一起的天數
-const startDate = new Date("2023-04-14"); 
-const daysEl = document.getElementById("days");
-
-function updateTimer() {
+window.onload = function() {
+    // 1. 計算天數
+    const startDate = new Date("2023-04-14"); 
+    const daysEl = document.getElementById("days");
     if (daysEl) {
         const now = new Date();
         const diff = now - startDate;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         daysEl.innerText = days;
     }
-}
-updateTimer();
 
-// 2. 愛心飄落特效
-function createHeart() {
-    const container = document.getElementById("heart-container");
-    if (!container) return;
-    
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-    container.appendChild(heart);
-    
-    setTimeout(() => { heart.remove(); }, 5000);
-}
-setInterval(createHeart, 300);
-
-// 3. 按鈕點擊功能 (新增這段)
-window.addEventListener('DOMContentLoaded', (event) => {
+    // 2. 頂部驚喜按鈕
     const btn = document.getElementById('surpriseBtn');
     const msg = document.getElementById('secretMessage');
-
     if (btn && msg) {
-        btn.addEventListener('click', function() {
+        btn.onclick = function() {
             msg.style.display = 'block';
-            alert("寶貝，情人節快樂！我愛你喔！🌹");
+            alert("情人節快樂！❤️");
             msg.scrollIntoView({ behavior: 'smooth' });
             btn.style.display = 'none';
-        });
+        };
     }
-});
+
+    // 3. 愛心特效函數
+    function createHeart() {
+        const container = document.getElementById("heart-container");
+        if (!container) return;
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        container.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+
+    // 4. 捉弄人的「不答應」按鈕
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const questionText = document.getElementById('question-text');
+
+    if (noBtn) {
+        const moveButton = function() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        };
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+    }
+
+    if (yesBtn) {
+        yesBtn.onclick = function() {
+            questionText.innerText = "我就知道你會答應！最愛你了 💖";
+            noBtn.style.display = 'none';
+            alert("確認成功！這輩子你跑不掉囉 🥰");
+            for(let i=0; i<30; i++) { setTimeout(createHeart, i * 100); }
+        };
+    }
+};
